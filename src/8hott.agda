@@ -29,4 +29,35 @@ leibniz-trans {A} {x} {y} {z} F F₁ P'' = λ w → (F₁ P'') ((F P'') w)
 
 -- Part II The axioms K and UIP
 
+UIP : Set₁
+UIP = {A : Set} {x y : A} (p q : x ≡ y) → p ≡ q
 
+K : Set₁
+K = {A : Set} {x : A} (P : (x ≡ x) → Set) → P refl → (p : x ≡ x) → P p
+
+UIP-K : UIP → K
+UIP-K uip P Pr p = subst P (uip refl p) Pr
+  where
+    -- uip refl p  : refl ≡ p
+    -- (P : (x ≡ x) → Set)
+    -- subst P (uip refl p) : P refl → P p
+    subst : {A : Set} (P : A → Set) → {x y : A} → x ≡ y → P x → P y
+    subst P refl p = p
+
+sym : {A : Set} {x y : A} → x ≡ y → y ≡ x
+sym refl = refl
+
+trans : {A : Set} {x y z : A} → x ≡ y → y ≡ z → x ≡ z
+trans refl refl = refl
+
+loop-eq : {A : Set} {x y : A} (p q : x ≡ y) → trans (sym p) q ≡ refl → p ≡ q
+loop-eq refl refl refl = refl
+
+K-UIP : K → UIP
+K-UIP K p q = {!!}
+
+UIP-proof : {A : Set} {x y : A} (p q : x ≡ y) → p ≡ q
+UIP-proof refl refl = refl
+
+K-proof : {A : Set} {x : A} (P : (x ≡ x) → Set) → P refl → (p : x ≡ x) → P p
+K-proof P Pr refl = Pr
