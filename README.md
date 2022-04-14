@@ -1,5 +1,5 @@
 # computationalLogic
-from Samuel Mimram's [Lectures](http://www.lix.polytechnique.fr/Labo/Samuel.Mimram//teaching/INF551/)
+from Samuel Mimram's [Lectures](http://www.lix.polytechnique.fr/Labo/Samuel.Mimram//teaching/INF551/).
 
 ## slides (semi-automatic highlight enabled)
 
