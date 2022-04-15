@@ -1,8 +1,10 @@
+open import Level
+
 module 8hott where
 
 -- Part I Equality
 
-data _≡_ {A : Set} (x : A) : (y : A) → Set where
+data _≡_ {A : Set} (x : A) : A → Set where
   refl : x ≡ x
 
 J : {A : Set} (B : (x y : A) → x ≡ y → Set) (r : (x : A) → B x x refl)
@@ -61,3 +63,4 @@ UIP-proof refl refl = refl
 
 K-proof : {A : Set} {x : A} (P : (x ≡ x) → Set) → P refl → (p : x ≡ x) → P p
 K-proof P Pr refl = Pr
+
